@@ -8,6 +8,7 @@
   <modules>
     <module>SpringCB</module>
     <module>eurekaserver</module>
+    <module>ribbonconsumer</module>
   </modules>
 
 
