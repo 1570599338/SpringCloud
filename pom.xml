@@ -9,6 +9,8 @@
     <module>SpringCB</module>
     <module>eurekaserver</module>
     <module>ribbonconsumer</module>
+    <module>feignconsumer</module>
+    <module>apiService</module>
   </modules>
 
 

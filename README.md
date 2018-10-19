@@ -247,16 +247,29 @@
         
         
         
+### 第5章、服务容错保护 Spring Cloud Hystrix
         
         
+### 第6章、服务容错保护 Spring Cloud Feign
+    1、Spring Cloud Feign在RestTemple的基础上做了进一步封装，由它来帮助我们定义和实现以来服务接口的定义。
+    2、在Spring Cloud Feign的实现下，我们只需要创建一个接口并用注解的方式来配置它，即可完成对服务提供放的绑定，
+        简化了在Spring Cloud Ribbon时自行封装服务调用客户端的开发量。
+    3、Spring Cloud Feign具备可茶吧的注解支持，包括F诶个 i 呢注解和JAX—RS注解，同事，为了适应Spring
+       的光大用户，它在Netflix Feign的基础上扩展了对Spring MVC 的注解主持         
         
+#### 快速入门        
+     1、通过@FeignClient注解指定服务名来绑定服务，然后在使用SpringMVC的注解绑定具体该服务提供的REST接口
+     2、服务名部分大小写，所以使用hello-service和HELLO-SERVICE都是可以的。
+     
+#### 参数绑定
+     
+       在定义个参数绑定时 @RequestParam，@RequestHeader等可以指定参数名称的注解，
+       他们的value千万不能少，在SpringMVC程序中，这些注解会根据参数名来作为默认值，但是在Feign中
+       绑定参数必须通过value属性赖智明具体的参数名，不然会跑出IllegalStateException异常，
+       value属性不能为空。
         
-        
-        
-        
-        
-        
-        
+### 继承特性
+            
         
         
         

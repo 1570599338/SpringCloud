@@ -50,6 +50,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>SpringCloudStudy</groupId>
+			<artifactId>api-Service</artifactId>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

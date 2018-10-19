@@ -1,12 +1,12 @@
 package com.didispace.web;
 
 
+import com.didispace.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * ClassName HelloController
@@ -33,4 +33,32 @@ public class HelloController {
         System.out.println("/hello,host:"+instance.getHost()+",service_id:"+instance.getServiceId());
         return "hello World";
     }
+
+    @RequestMapping("/hello1")
+    public String index(@RequestParam String name) {
+
+        return "hello"+name;
+    }
+
+    @RequestMapping("/hello2")
+    public User index(@RequestHeader String name, @RequestHeader Integer age) {
+
+        return new User(age,name);
+    }
+
+    @RequestMapping("/hello3")
+    public String index(@RequestBody User user) {
+
+        return "hello World "+user.getName()+","+user.getAge();
+    }
+
+
+
+
+
+
+
+
+
+
 }
