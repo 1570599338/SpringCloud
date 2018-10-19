@@ -172,14 +172,78 @@
  
  
 ## 第四章、客户端负载均衡 Spring cloud Ribbon
-       Spring cloud Ribbon 是一个基于HTTP和TCP的客户端负载均衡工具，它基于Netflix Ribbon实现。
-       
+       1、Spring cloud Ribbon 是一个基于HTTP和TCP的客户端负载均衡工具，它基于Netflix Ribbon实现。
+       2、它几乎存在于每一个Spring Cloud构建的微服务服务和基础设施中。因为微服务间的调用，API网关的请
+          求转发等内容，实际上都是通过Ribbon来实现的，包括后续我们将要介绍的Feign，它也是基于Ribbon实
+          际的工具。
+          
 ### 客户端负载均衡
+    解决的问题：对系统的高可用、网络压力的缓解和处理能力扩容的重要手段之一。
+    分类 硬件：主要通过在服务器节点之间安装专门用于负载均衡的设备 比如：F5
+        软件：主要通过在服务器上安装一些具有均衡负载功能或模块的软件来完成请求分发工作，比如Nginx
+        
+    客户端负载均衡和服务端负载均衡的区别
+        区别：客户端负载均衡和服务端负载均衡的区别在于服务清单所存储的位置。
+        客户端负载均衡中，所有客户端节点都维护着自己的要访问的服务端清单，而这些服务端的清单来自于服务
+           注册中心，譬如上一张我们介绍的Eureka服务端。
+     
+ #### 微服务使用客户端负载均衡调用步骤：
+        1、服务提供者只需要启动多个服务实例并注册到一个注册中心或多个相关联的服务注册中心。
+        2、服务消费者直接通过调用@LoadBalanced注解修饰过的RestTemplate来实现面向服务的接口调用。
+                
               
        
        
-           
+### RestTemplate详解
+    RestTemplate对象会使用Ribbon的自动化配置，同是通过配置@LoadBalanced才能够开启客户端负载均衡。
+    
+#### RestTemplate几种不同请求类型和参数类型的服务调用实现
+   
+#####GET请求
+ ######  方式一：getForEntity函数
+ ######  方式二：getForObject函数
         
+#####POST请求
+ ######  方式一：postForEntity函数
+                postForEntity(String url,Object request,Class responseType) 
+                1、responseType参数是对请求响应的body内容的类型定义。
+                2、request参数 
+                        a、参数是普通对象，RestTemplate会将请求对象转换为一个HttpEntity对象来处理，其中Object就是request的类型，
+                          request内容会被视作完整的body来处理；
+                        b、参数是HttpEntity对象，那么就会被当作一个完整的HTTP请求对象来处理，这个request中不仅包含了body的内容，
+                           也包含了header的内容。
+ ######  方式二：postForObject函数  
+ 
+ ######  方式二：postForLocation函数  
+                由于postForLocation函数会返回新资源的URI，该URI就相当于指定了返回类型，so此方法实现的post请求不需要像postEntity和
+                postForObject那样指定responseType。
+    
+           
+ #####put请求 
+     put函数，put函数为void类型，故put通函数中没有responseType参数。
+     
+  #####delete请求 
+        delete函数 ，通常都将delete请求的唯一标识凭借在url中，所以  delete请求也不需要request的body信息。
+        
+        
+####重试机制
+    # 开启重试机制，默认是关闭
+    spring.cloud.loadbalancer.retry.enabled=true
+    # 断路器的超时时间需要大于Ribbon的超时时间，不然不会出发重试。
+    hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=10000
+    
+    # 请求连接的超时时间
+    hello-server-admin.ribbon.ConnectTimeout=250
+    # 请求处理的超时时间
+    hello-server-admin.ribbon.ReadTimeout=1000
+    # 对所有操作请求都进行重试
+    hello-server-admin.ribbon.OkToRetryOnAllOperation=true
+    # 切换实例的重试次数
+    hello-server-admin.ribbon.MaxAutoRetriesNextServer=2
+    #对当前实例的重试的次数
+    hello-server-admin.ribbon.MaxAutoRetries=1     
+        
+   
         
         
         
