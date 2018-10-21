@@ -24,7 +24,7 @@ public interface HelloService {
 
 
     @RequestMapping("/hello5")
-    String hello(@RequestHeader("name") String name, @RequestHeader("age") Integer age);
+    User hello(@RequestHeader("name") String name, @RequestHeader("age") Integer age);
 
 
     @RequestMapping("/hello6")

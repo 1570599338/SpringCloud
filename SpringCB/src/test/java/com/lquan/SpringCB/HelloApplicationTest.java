@@ -27,23 +27,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @return
  **/
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = HelloController.class)
-@WebAppConfiguration
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes = HelloController.class)
+//@WebAppConfiguration
 public class HelloApplicationTest {
-    private MockMvc mvc;// 用于模拟对controller的调用
-
-    @Before
-    public void setUp()  throws Exception{
-        this.mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
-    }
-
-    @Test
-    public void hello() throws Exception{
-        mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("hello World")));
-       //String aa=  mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON)).;
-       // System.out.print("^^^^^^^^^^^^^^^^^^^^^^^^^^^"+aa);
-    }
+//    private MockMvc mvc;// 用于模拟对controller的调用
+//
+//    @Before
+//    public void setUp()  throws Exception{
+//        this.mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
+//    }
+//
+//    @Test
+//    public void hello() throws Exception{
+//        mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(equalTo("hello World")));
+//       //String aa=  mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON)).;
+//       // System.out.print("^^^^^^^^^^^^^^^^^^^^^^^^^^^"+aa);
+//    }
 }

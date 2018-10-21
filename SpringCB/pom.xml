@@ -51,10 +51,11 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>SpringCloudStudy</groupId>
-			<artifactId>api-Service</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>SpringCloudStudy</groupId>-->
+			<!--<artifactId>api-Service</artifactId>-->
+			<!--<version>0.0.1-SNAPSHOT</version>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<dependencyManagement>
