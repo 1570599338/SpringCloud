@@ -250,7 +250,7 @@
 ### 第5章、服务容错保护 Spring Cloud Hystrix
         
         
-### 第6章、服务容错保护 Spring Cloud Feign
+### 第6章、生命是服务调用 Spring Cloud Feign
     1、Spring Cloud Feign在RestTemple的基础上做了进一步封装，由它来帮助我们定义和实现以来服务接口的定义。
     2、在Spring Cloud Feign的实现下，我们只需要创建一个接口并用注解的方式来配置它，即可完成对服务提供放的绑定，
         简化了在Spring Cloud Ribbon时自行封装服务调用客户端的开发量。
@@ -273,9 +273,47 @@
 
             
         
-        
-        
-        
+                
+### 第7章、API网关服务 Spring Cloud Zuul
+
+
+#### 快速入门
+
+##### 构建网关      
+    Spring Cloud Zuul 中特别提供了/routes端点来返回当前的所有路由规则
+    
+
+##### 请求路由
+    # 实现传统路由的转发功能
+    zuul.routes.api-a-url.path=/api-a-url/**
+    zuul.routes.ai-a-url.url=http://localhost:8080/
+    
+    zuul.routes.api-a-url.path中的api-a-url部分为路由的名字，可以任意定义，
+    但是一组path和url映射关系的路由名要相同
+    
+  
+##### 面向服务的路由
+    1、传统的路由配置方式对于我们来说并不友好，它同样需要运维人员花费大量的时间来维护各个路由path
+    与url的关系。
+    
+    2、为了解决传统中的关系映射问题实现了实现了面向服务的路由。
+    
+    
+##### 请求过滤
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
         
         
         

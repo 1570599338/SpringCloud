@@ -11,7 +11,7 @@
     <module>ribbonconsumer</module>
     <module>feignconsumer</module>
     <module>apiService</module>
-      <module>helloserviceapi</module>
+    <module>apigateway</module>
   </modules>
 
 
