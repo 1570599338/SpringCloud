@@ -400,12 +400,54 @@
        run():过滤器的具体逻辑。  
         
         
+####  异常处理
+    自定义过滤器处理异常的两种解决方法：
+        一、通过在各个阶段的过滤器中增加try-catch块，实现过滤器内部异常处理。
+        二、利用error类型过滤器的生命周期特性，集中处理pre
+            route、post阶段跑出的异常信息      
         
-        
-        
+ #### 禁用过滤器
+       1、不论是核心过滤器还是自定义过滤器，只要在API网关应用中为他们创建了实例，那么默认情况下，
+       他们都是启动状态的。
+       2、禁用过滤器配置格式
+                zuul.<SimleClassName>.<filterType>.disable=true
+            <SimleClassName>代表过滤器的类名。
+            <filterType>代表过滤器的类型。
+            例如：zuul.AccessFilter.pre.disable=true
+            
+
+#### 动态加载
+    
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 

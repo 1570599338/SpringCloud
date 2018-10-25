@@ -12,6 +12,7 @@
     <module>feignconsumer</module>
     <module>apiService</module>
     <module>apigateway</module>
+      <module>apigatewaydynamicroute</module>
   </modules>
 
 
