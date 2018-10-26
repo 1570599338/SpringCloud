@@ -13,6 +13,7 @@
     <module>apiService</module>
     <module>apigateway</module>
       <module>apigatewaydynamicroute</module>
+      <module>configserver</module>
   </modules>
 
 
